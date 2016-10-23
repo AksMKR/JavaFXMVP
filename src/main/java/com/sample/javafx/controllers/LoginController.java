@@ -6,6 +6,8 @@ import com.sample.javafx.views.LoginView;
 import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +15,8 @@ import javax.annotation.PostConstruct;
 
 @Component
 public class LoginController {
+
+    public static final Logger LOG = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private LoginView loginView;
@@ -44,10 +48,10 @@ public class LoginController {
             String password = loginView.getPassword();
 
             if (defaultUser.getUserName().equals(username) && defaultUser.getPassword().equals(password)) {
-                System.out.println("Login success");
+                LOG.info("Login success");
                 Platform.exit();
             } else {
-                System.out.println("Wrong username or password");
+                LOG.info("Wrong username or password");
             }
         });
     }
