@@ -1,0 +1,18 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<fx:root xmlns:fx="http://javafx.com/fxml"
+         type="javafx.scene.layout.Pane">
+    <VBox spacing="10">
+        <HBox spacing="10">
+            <Label text="Enter username"/>
+            <TextField text="" fx:id="userText"/>
+        </HBox>
+        <HBox spacing="10">
+            <Label text="Enter password"/>
+            <PasswordField text="" fx:id="passwordText"/>
+        </HBox>
+        <HBox spacing="10">
+            <Button fx:id="loginButton" text="Click Here" prefWidth="200" prefHeight="30"/>
+        </HBox>
+    </VBox>
+</fx:root>
