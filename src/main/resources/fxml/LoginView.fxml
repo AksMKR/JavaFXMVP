@@ -5,11 +5,11 @@
     <VBox spacing="10">
         <HBox spacing="10">
             <Label text="Enter username"/>
-            <TextField text="" fx:id="userText"/>
+            <TextField fx:id="userText"/>
         </HBox>
         <HBox spacing="10">
             <Label text="Enter password"/>
-            <PasswordField text="" fx:id="passwordText"/>
+            <PasswordField fx:id="passwordText"/>
         </HBox>
         <HBox spacing="10">
             <Button fx:id="loginButton" text="Click Here" prefWidth="200" prefHeight="30"/>

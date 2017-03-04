@@ -7,10 +7,4 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan("com.sample.javafx")
-public class JavaFXAppConfiguration {
-
-    @Bean
-    public LoginController getLoginController() {
-        return new LoginController();
-    }
-}
+public class JavaFXAppConfiguration {}

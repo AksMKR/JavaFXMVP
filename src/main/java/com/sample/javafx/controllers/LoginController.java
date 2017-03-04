@@ -16,16 +16,12 @@ import javax.annotation.PostConstruct;
 @Component
 public class LoginController {
 
-    public static final Logger LOG = LoggerFactory.getLogger(LoginController.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LoginController.class);
 
     @Autowired
     private LoginView loginView;
 
     private User defaultUser;
-
-    public LoginView getLoginView() {
-        return loginView;
-    }
 
     @PostConstruct
     private void init() {
@@ -47,7 +43,7 @@ public class LoginController {
             String username = loginView.getUserName();
             String password = loginView.getPassword();
 
-            if (defaultUser.getUserName().equals(username) && defaultUser.getPassword().equals(password)) {
+            if (username.equals(defaultUser.getUserName()) && password.equals(defaultUser.getPassword())) {
                 LOG.info("Login success");
                 Platform.exit();
             } else {
