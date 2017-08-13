@@ -1,14 +1,20 @@
 package com.sample.javafx.views;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import com.sample.javafx.controllers.LoginController;
+import com.sample.javafx.dao.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javax.annotation.PostConstruct;
+import org.controlsfx.control.Notifications;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class LoginView extends AbstractFxmlPane {
+
+    @Autowired
+    private LoginController loginController;
 
     @FXML
     private Button loginButton;
@@ -21,15 +27,18 @@ public class LoginView extends AbstractFxmlPane {
         super(LoginView.class);
     }
 
-    public void onLoginButtonAction(final EventHandler<ActionEvent> eventHandler) {
-        loginButton.setOnAction(eventHandler);
+    @PostConstruct
+    private void init() {
+        loginButton.setOnAction(event -> {
+            if (loginController.isValidUser(getUser())) {
+                Notifications.create().text("Login successful").showInformation();
+            } else {
+                Notifications.create().text("Username and/or password incorrect").showError();
+            }
+        });
     }
 
-    public String getUserName() {
-        return userText.getText();
-    }
-
-    public String getPassword() {
-        return passwordText.getText();
+    private User getUser() {
+        return new User(userText.getText(), passwordText.getText());
     }
 }

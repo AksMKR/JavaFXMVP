@@ -13,23 +13,17 @@ public class AbstractFxmlPane extends Pane implements Initializable{
     private static final String FXML_DIRECTORY = "/fxml";
     private static final String FXML_FILE_STRING_FORMATTER = "%s/%s.fxml";
 
-    protected ResourceBundle bundle;
-
-    private FXMLLoader fxmlLoader;
+    private ResourceBundle bundle;
 
     public AbstractFxmlPane(Class clazz) {
         this(clazz, null, FXML_DIRECTORY);
-    }
-
-    public AbstractFxmlPane(Class clazz, ResourceBundle resources) {
-        this(clazz, resources, FXML_DIRECTORY);
     }
 
     private AbstractFxmlPane(Class clazz, ResourceBundle resources, String fxmlDirectory) {
         super();
 
         String fxmlFilePath = String.format(FXML_FILE_STRING_FORMATTER, fxmlDirectory, clazz.getSimpleName());
-        fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFilePath));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFilePath));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

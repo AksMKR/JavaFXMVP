@@ -24,7 +24,6 @@
     </appender>
 
     <logger name="com.springframework" level="INFO"/>
-    <logger name="com.precisionhawk" level="DEBUG"/>
     <logger name="com.sample.javafx" level="INFO"/>
 
     <root level="WARN">
